@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button, Container, Form } from 'react-bootstrap';
 
 class TodoApp extends React.Component {
     constructor(props) {
@@ -10,23 +11,21 @@ class TodoApp extends React.Component {
   
     render() {
       return (
-        <div className='container'>
-        <h3>Tareas pendientes</h3>
-        <TodoList items={this.state.items} />
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="new-todo">
-            ¿Qué se necesita hacer?
-          </label>
-          <input
-            id="new-todo"
-            onChange={this.handleChange}
-            value={this.state.text}
-          />
-          <button className='btn btn-primary'>
-            Añadir #{this.state.items.length + 1}
-          </button>
-          </form> 
-        </div>
+        <Container>
+            <h3>Tareas pendientes</h3>
+            <TodoList items={this.state.items} />
+            <Form onSubmit={this.handleSubmit}>
+                <Form.Group className='mb-3'>
+                    <Form.Label>¿Qué se necesita hacer?</Form.Label>
+                    <Form.Control 
+                        placeholder='escribe una tarea'
+                        onChange={this.handleChange}
+                        value={this.state.text}
+                    />
+                </Form.Group>
+                <Button className='btn btn-primary'>Añadir #{this.state.items.length + 1}</Button>
+            </Form> 
+        </Container>
       );
     }
   
